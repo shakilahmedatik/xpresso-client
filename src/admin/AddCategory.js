@@ -9,7 +9,7 @@ const AddCategory = () => {
   const [error, setError] = useState(false)
   const [success, setSuccess] = useState(false)
 
-  // destructure user and token from localstorage
+  // destructure user and token from local-storage
   const { user, token } = isAuthenticated()
 
   const handleChange = e => {
@@ -76,12 +76,14 @@ const AddCategory = () => {
       title='Add a new category'
       description={`G'day ${user.name}, ready to add a new category?`}
     >
-      <div className='row'>
-        <div className='col-md-8 offset-md-2'>
-          {showSuccess()}
-          {showError()}
-          {newCategoryFom()}
-          {goBack()}
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-8 offset-md-2'>
+            {showSuccess()}
+            {showError()}
+            {newCategoryFom()}
+            {goBack()}
+          </div>
         </div>
       </div>
     </Layout>

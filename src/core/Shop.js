@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import Layout from './Layout'
@@ -70,6 +69,7 @@ const Shop = () => {
   useEffect(() => {
     init()
     loadFilteredResults(skip, limit, myFilters.filters)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleFilters = (filters, filterBy) => {
@@ -103,34 +103,38 @@ const Shop = () => {
       description='Search and find books of your choice'
       className='container-fluid'
     >
-      <div className='row'>
-        <div className='col-12 col-md-4 col-xl-4'>
-          <h4>Filter by categories</h4>
-          <ul>
-            <Checkbox
-              categories={categories}
-              handleFilters={filters => handleFilters(filters, 'category')}
-            />
-          </ul>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-12 col-md-3 col-xl-4 '>
+            <h4>Filter by categories</h4>
+            <ul>
+              <Checkbox
+                categories={categories}
+                handleFilters={filters => handleFilters(filters, 'category')}
+              />
+            </ul>
 
-          <h4>Filter by price range</h4>
-          <div>
-            <RadioBox
-              prices={prices}
-              handleFilters={filters => handleFilters(filters, 'price')}
-            />
+            <h4>Filter by price range</h4>
+            <div>
+              <RadioBox
+                prices={prices}
+                handleFilters={filters => handleFilters(filters, 'price')}
+              />
+            </div>
           </div>
-        </div>
 
-        <div className='col-12 col-md-8 col-xl-8'>
-          <h2 className='mb-4'>Products</h2>
-          <div className='row'>
-            {filteredResults.map((product, i) => (
-              <Card key={i} product={product} />
-            ))}
+          <div className='col-12 col-md-9 col-xl-8'>
+            <h2 className='mb-4'>Products</h2>
+            <div className='row'>
+              {filteredResults.map((product, i) => (
+                <div key={i} className='col-12 col-md-6 col-xl-4 mb-3'>
+                  <Card product={product} />
+                </div>
+              ))}
+            </div>
+            <hr />
+            {loadMoreButton()}
           </div>
-          <hr />
-          {loadMoreButton()}
         </div>
       </div>
     </Layout>

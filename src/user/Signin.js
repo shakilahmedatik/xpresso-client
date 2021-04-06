@@ -5,8 +5,8 @@ import { signin, authenticate, isAuthenticated } from '../auth'
 
 const Signin = () => {
   const [values, setValues] = useState({
-    email: 'ryan@gmail.com',
-    password: 'rrrrrr9',
+    email: 'shakilatik@gmail.com',
+    password: 'atik123',
     error: '',
     loading: false,
     redirectToReferrer: false,
@@ -98,10 +98,12 @@ const Signin = () => {
       description='Signin to Node React E-commerce App'
       className='container col-md-8 offset-md-2'
     >
-      {showLoading()}
-      {showError()}
-      {signUpForm()}
-      {redirectUser()}
+      <div className='container mb-5'>
+        {showLoading()}
+        {showError()}
+        {signUpForm()}
+        {redirectUser()}
+      </div>
     </Layout>
   )
 }

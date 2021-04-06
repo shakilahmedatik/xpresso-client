@@ -98,9 +98,11 @@ const Signup = () => {
       description='Signup to Node React E-commerce App'
       className='container col-md-8 offset-md-2'
     >
-      {showSuccess()}
-      {showError()}
-      {signUpForm()}
+      <div className='container mb-5'>
+        {showSuccess()}
+        {showError()}
+        {signUpForm()}
+      </div>
     </Layout>
   )
 }

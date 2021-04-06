@@ -10,6 +10,14 @@ import AdminDashboard from './user/AdminDashboard'
 import AddCategory from './admin/AddCategory'
 import AddProduct from './admin/AddProduct'
 import Shop from './core/Shop'
+import Product from './core/Product'
+import Cart from './core/Cart'
+import Orders from './admin/Orders'
+import Profile from './user/Profile'
+import ManageProducts from './admin/ManageProducts'
+import UpdateProduct from './admin/UpdateProduct'
+import UpdateCategory from './admin/updateCategory'
+import ManageCategory from './admin/ManageCategory'
 
 const Routes = () => {
   return (
@@ -23,6 +31,22 @@ const Routes = () => {
         <AdminRoute path='/admin/dashboard' exact component={AdminDashboard} />
         <AdminRoute path='/create/category' exact component={AddCategory} />
         <AdminRoute path='/create/product' exact component={AddProduct} />
+        <Route path='/product/:productId' exact component={Product} />
+        <Route path='/cart' exact component={Cart} />
+        <AdminRoute path='/admin/orders' exact component={Orders} />
+        <PrivateRoute path='/profile/:userId' exact component={Profile} />
+        <PrivateRoute path='/admin/products' exact component={ManageProducts} />
+        <PrivateRoute path='/admin/category' exact component={ManageCategory} />
+        <AdminRoute
+          path='/admin/product/update/:productId'
+          exact
+          component={UpdateProduct}
+        />
+        <AdminRoute
+          path='/admin/category/update/:categoryId'
+          exact
+          component={UpdateCategory}
+        />
       </Switch>
     </BrowserRouter>
   )
