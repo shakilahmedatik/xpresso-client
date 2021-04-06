@@ -99,7 +99,7 @@ const Shop = () => {
 
   return (
     <Layout
-      title='Shop Page'
+      title='SHOP'
       description='Search and find food & drinks of your choice'
       className='container-fluid'
     >
