@@ -102,9 +102,11 @@ const Profile = ({ match }) => {
       description='Update your profile'
       className='container-fluid'
     >
-      <h2 className='mb-4'>Profile update</h2>
-      {profileUpdate(name, email, password)}
-      {redirectUser(success)}
+      <div className='container mb-5'>
+        <h2 className='mb-4'>Profile update</h2>
+        {profileUpdate(name, email, password)}
+        {redirectUser(success)}
+      </div>
     </Layout>
   )
 }

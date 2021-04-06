@@ -109,7 +109,7 @@ const Card = ({
   }
 
   return (
-    <div className='card '>
+    <div className='card rounded shadow'>
       <div className='card-header card-header-1 text-center text-bold'>
         {product.name}
       </div>

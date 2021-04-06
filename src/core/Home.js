@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import Layout from './Layout'
 import { getProducts } from './apiCore'
 import Card from './Card'
 import Search from './Search'
+import Footer from './Footer'
+import slide1 from '../images/bg1.jpg'
+import NavigationBar from './NavigationBar'
 
 const Home = () => {
   const [productsBySell, setProductsBySell] = useState([])
@@ -36,12 +38,23 @@ const Home = () => {
   }, [])
 
   return (
-    <Layout
-      title='Espresso Express'
-      description='A cup of coffee is all you need!'
-      className='container-fluid'
-    >
-      <Search />
+    <div>
+      <NavigationBar />
+
+      <div
+        style={{
+          backgroundImage: `url(${slide1})`,
+          backgroundSize: 'cover',
+          backgroundPosition: ' center',
+          backgroundRepeat: 'no-repeat',
+          height: '305px',
+        }}
+        className='container-fluid mb-5'
+      >
+        <div style={{ paddingTop: '120px' }} class='row'>
+          <Search />
+        </div>
+      </div>
       <div className='container mb-4'>
         <h2 className='mb-4'>NEW ARRIVALS</h2>
         <div className='row'>
@@ -63,7 +76,8 @@ const Home = () => {
           ))}
         </div>
       </div>
-    </Layout>
+      <Footer />
+    </div>
   )
 }
 

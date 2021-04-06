@@ -1,7 +1,7 @@
 import React from 'react'
-import Menu from './Menu'
 import '../styles.css'
 import Footer from './Footer'
+import NavigationBar from './NavigationBar'
 
 const Layout = ({
   title = 'Title',
@@ -10,7 +10,7 @@ const Layout = ({
   children,
 }) => (
   <div>
-    <Menu />
+    <NavigationBar />
     <div className='jumbotron text-center'>
       <h2>{title}</h2>
       <p className='lead'>{description}</p>

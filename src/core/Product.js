@@ -43,7 +43,7 @@ const Product = props => {
       className='container-fluid'
     >
       <div className='row'>
-        <div className='col-12 col--md-8 col--xl-8 mb-4'>
+        <div className='col-12 col-md-8 col-xl-8 mb-4'>
           {product && product.description && (
             <Card
               product={product}
@@ -53,7 +53,7 @@ const Product = props => {
           )}
         </div>
 
-        <div className='col-12 col--md-4 col--xl-4'>
+        <div className='col-12 col-md-4 col-xl-4'>
           <h4>Related products</h4>
           {relatedProduct.map((p, i) => (
             <div className='mb-3'>

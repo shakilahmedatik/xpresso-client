@@ -15,7 +15,6 @@
   border-radius: 50%;
   padding: 2px;
   font-size: 12px;
-  font-style: italic;
   background: #000;
 }
 /**
@@ -57,12 +56,12 @@
 }
 
 .jumbotron h2 {
-  margin-top: -20px;
+  margin-top: -40px;
 }
 
 @media only screen and (max-width: 600px) {
   .jumbotron h2 {
-    margin-top: 10px;
+    margin-top: -20px;
   }
 }
 
@@ -71,7 +70,7 @@
   */
 
 .jumbotron {
-  height: 180px;
+  height: 100px;
   color: #fff;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;

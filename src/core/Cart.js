@@ -36,7 +36,11 @@ const Cart = () => {
 
   const noItemsMessage = () => (
     <h2>
-      Your cart is empty. <br /> <Link to='/shop'>Continue shopping</Link>
+      <i class='fas fa-shopping-cart'></i> is empty!
+      <br />
+      <Link to='/shop'>
+        Continue shopping..<i className='fas fa-rocket'></i>
+      </Link>
     </h2>
   )
 
@@ -48,12 +52,14 @@ const Cart = () => {
     >
       <div className='container'>
         <div className='row'>
-          <div className='col-12 col-md-6 col-xl-6'>
+          <div className='col-12 col-md-6 col-xl-6 mb-4'>
             {items.length > 0 ? showItems(items) : noItemsMessage()}
           </div>
 
-          <div className='col-12 col-md-6 col-xl-6'>
-            <h2 className='mb-4'>Your cart summary</h2>
+          <div className='col-12 col-md-6 col-xl-6 mb-5'>
+            <h2 className='mb-4'>
+              <i class='fas fa-shopping-cart'></i> Summary
+            </h2>
             <hr />
             <Checkout products={items} setRun={setRun} run={run} />
           </div>

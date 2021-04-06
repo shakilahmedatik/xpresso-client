@@ -100,26 +100,34 @@ const Shop = () => {
   return (
     <Layout
       title='Shop Page'
-      description='Search and find books of your choice'
+      description='Search and find food & drinks of your choice'
       className='container-fluid'
     >
       <div className='container'>
         <div className='row'>
           <div className='col-12 col-md-3 col-xl-4 '>
-            <h4>Filter by categories</h4>
-            <ul>
-              <Checkbox
-                categories={categories}
-                handleFilters={filters => handleFilters(filters, 'category')}
-              />
-            </ul>
-
-            <h4>Filter by price range</h4>
             <div>
-              <RadioBox
-                prices={prices}
-                handleFilters={filters => handleFilters(filters, 'price')}
-              />
+              <h4>
+                <i class='fas fa-filter'></i> FILTER
+              </h4>
+              <hr />
+            </div>
+            <div>
+              <h5>By Categories:</h5>
+              <ul>
+                <Checkbox
+                  categories={categories}
+                  handleFilters={filters => handleFilters(filters, 'category')}
+                />
+              </ul>
+
+              <h5>By price:</h5>
+              <div>
+                <RadioBox
+                  prices={prices}
+                  handleFilters={filters => handleFilters(filters, 'price')}
+                />
+              </div>
             </div>
           </div>
 
