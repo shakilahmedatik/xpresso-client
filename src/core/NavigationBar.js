@@ -14,10 +14,10 @@ const isActive = (history, path) => {
 }
 const NavigationBar = ({ history }) => {
   return (
-    <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
+    <Navbar sticky='top' collapseOnSelect expand='lg' bg='dark' variant='dark'>
       <div className='container'>
         <Navbar.Brand>
-          <Link className='nav-link text-light' to='/'>
+          <Link className='nav-item text-light' to='/'>
             <img
               alt=''
               src={logo}
