@@ -37,6 +37,14 @@ const Signup = () => {
     })
   }
 
+  const goBack = () => (
+    <div className='mt-5'>
+      <Link to='/signin' className='text-info'>
+        Old user? Signin Now!
+      </Link>
+    </div>
+  )
+
   const signUpForm = () => (
     <form>
       <div className='form-group'>
@@ -71,6 +79,7 @@ const Signup = () => {
       <button onClick={clickSubmit} className='btn btn-primary'>
         Submit
       </button>
+      {goBack()}
     </form>
   )
 

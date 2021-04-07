@@ -53,7 +53,7 @@ const Search = () => {
 
   const searchMessage = (searched, results) => {
     if (searched && results.length > 0) {
-      return `Found ${results.length} products`
+      return `FOUND ${results.length} PRODUCTS`
     }
     if (searched && results.length < 1) {
       return `No products found`
@@ -66,7 +66,9 @@ const Search = () => {
         <h2 className='mt-4 mb-4'>{searchMessage(searched, results)}</h2>
         <div className='row'>
           {results.map((product, i) => (
-            <Card key={i} product={product} />
+            <div className='col-12 col-md-6 col-xl-3 mb-3'>
+              <Card key={i} product={product} />
+            </div>
           ))}
         </div>
       </div>
@@ -106,7 +108,9 @@ const Search = () => {
     <div className='container'>
       <div className='row'>
         <div className='container mb-3'>{searchForm()}</div>
-        <div className='container-fluid mb-3'>{searchedProducts(results)}</div>
+        <div style={{ marginTop: '100px' }} className='container-fluid mb-3'>
+          {searchedProducts(results)}
+        </div>
       </div>
     </div>
   )

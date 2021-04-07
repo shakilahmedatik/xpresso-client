@@ -50,12 +50,12 @@ const Home = () => {
           height: '305px',
         }}
         className='container-fluid mb-5'
-      >
-        <div style={{ paddingTop: '120px' }} class='row'>
+      ></div>
+      <div className='container mb-4'>
+        <div style={{ marginTop: '-220px' }} class='row'>
           <Search />
         </div>
-      </div>
-      <div className='container mb-4'>
+
         <h2 className='mb-4'>NEW ARRIVALS</h2>
         <div className='row'>
           {productsByArrival.map((product, i) => (
