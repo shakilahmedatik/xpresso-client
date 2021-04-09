@@ -34,7 +34,15 @@ const Shop = () => {
   }
 
   const showLoading = loading =>
-    loading && <h2 className='text-danger'>Loading...</h2>
+    loading && (
+      <div className='container'>
+        <div className='row justify-content-center'>
+          <div class='spinner-border' role='status'>
+            <span class='sr-only'>Loading...</span>
+          </div>
+        </div>
+      </div>
+    )
 
   const loadFilteredResults = newFilters => {
     // console.log(newFilters);

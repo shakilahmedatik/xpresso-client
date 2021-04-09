@@ -16,7 +16,15 @@ const Home = () => {
   })
 
   const showLoading = loading =>
-    loading && <h2 className='text-danger'>Loading...</h2>
+    loading && (
+      <div className='container'>
+        <div className='row justify-content-center'>
+          <div class='spinner-border' role='status'>
+            <span class='sr-only'>Loading...</span>
+          </div>
+        </div>
+      </div>
+    )
 
   const loadProductsBySell = () => {
     getProducts('sold').then(data => {
@@ -77,7 +85,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className='container'>
+      <div className='container mb-5'>
         <h2 className='mb-4'>BEST SELLER</h2>
         {showLoading(loading)}
         <div className='row'>
