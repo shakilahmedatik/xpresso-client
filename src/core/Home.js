@@ -11,13 +11,21 @@ const Home = () => {
   const [productsByArrival, setProductsByArrival] = useState([])
   // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(false)
+  const [loading, setLoading] = useState({
+    loading: false,
+  })
+
+  const showLoading = loading =>
+    loading && <h2 className='text-danger'>Loading...</h2>
 
   const loadProductsBySell = () => {
     getProducts('sold').then(data => {
       if (data.error) {
         setError(data.error)
       } else {
+        setLoading(true)
         setProductsBySell(data)
+        setLoading(false)
       }
     })
   }
@@ -27,7 +35,9 @@ const Home = () => {
       if (data.error) {
         setError(data.error)
       } else {
+        setLoading(true)
         setProductsByArrival(data)
+        setLoading(false)
       }
     })
   }
@@ -57,6 +67,7 @@ const Home = () => {
         </div>
 
         <h2 className='mb-4'>NEW ARRIVALS</h2>
+        {showLoading(loading)}
         <div className='row'>
           {productsByArrival.map((product, i) => (
             <div key={i} className='col-12 col-md-6 col-xl-3 mb-3'>
@@ -68,6 +79,7 @@ const Home = () => {
 
       <div className='container'>
         <h2 className='mb-4'>BEST SELLER</h2>
+        {showLoading(loading)}
         <div className='row'>
           {productsBySell.map((product, i) => (
             <div key={i} className='col-12 col-md-6 col-xl-3 mb-3'>

@@ -17,16 +17,24 @@ const Shop = () => {
   const [skip, setSkip] = useState(0)
   const [size, setSize] = useState(0)
   const [filteredResults, setFilteredResults] = useState([])
+  const [loading, setLoading] = useState({
+    loading: false,
+  })
 
   const init = () => {
     getCategories().then(data => {
       if (data.error) {
         setError(data.error)
       } else {
+        setLoading(true)
         setCategories(data)
+        setLoading(false)
       }
     })
   }
+
+  const showLoading = loading =>
+    loading && <h2 className='text-danger'>Loading...</h2>
 
   const loadFilteredResults = newFilters => {
     // console.log(newFilters);
@@ -34,9 +42,11 @@ const Shop = () => {
       if (data.error) {
         setError(data.error)
       } else {
+        setLoading(true)
         setFilteredResults(data.data)
         setSize(data.size)
         setSkip(0)
+        setLoading(false)
       }
     })
   }
@@ -114,6 +124,7 @@ const Shop = () => {
             </div>
             <div>
               <h5>By Categories:</h5>
+              {showLoading(loading)}
               <ul>
                 <Checkbox
                   categories={categories}
@@ -133,6 +144,7 @@ const Shop = () => {
 
           <div className='col-12 col-md-9 col-xl-8'>
             <h2 className='mb-4'>Products</h2>
+            {showLoading(loading)}
             <div className='row'>
               {filteredResults.map((product, i) => (
                 <div key={i} className='col-12 col-md-6 col-xl-4 mb-3'>
