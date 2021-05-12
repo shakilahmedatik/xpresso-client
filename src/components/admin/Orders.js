@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Layout from '../core/Layout'
+import Layout from '../shared/Layout'
 import { isAuthenticated } from '../auth'
 import { listOrders, getStatusValues, updateOrderStatus } from './apiAdmin'
 import moment from 'moment'

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Layout from '../core/Layout'
+import Layout from '../shared/Layout'
 import { isAuthenticated } from '../auth'
 import { Link, Redirect } from 'react-router-dom'
 import { getCategory, updateCategory } from './apiAdmin'

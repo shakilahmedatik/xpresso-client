@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { getProducts } from './apiCore'
 import Card from './Card'
 import Search from './Search'
-import Footer from './Footer'
-import slide1 from '../images/bg1.jpg'
-import NavigationBar from './NavigationBar'
+import Footer from '../shared/footer/Footer'
+import slide1 from '../../assets/images/bg1.jpg'
+import NavigationBar from '../shared/NavigationBar'
 
 const Home = () => {
   const [productsBySell, setProductsBySell] = useState([])

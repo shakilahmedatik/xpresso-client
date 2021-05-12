@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
-import Layout from './Layout'
+import Layout from '../shared/Layout'
 import Card from './Card'
 import { getCategories, getFilteredProducts } from './apiCore'
 import Checkbox from './Checkbox'

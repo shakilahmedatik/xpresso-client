@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Redirect, Link } from 'react-router-dom'
-import Layout from '../core/Layout'
+import Layout from '../shared/Layout'
 import { signin, authenticate, isAuthenticated } from '../auth'
 
 const Signin = () => {

@@ -2,8 +2,8 @@ import React from 'react'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import { Link, withRouter } from 'react-router-dom'
 import { signout, isAuthenticated } from '../auth'
-import { itemTotal } from './cartHelpers'
-import logo from '../images/logo-round.png'
+import { itemTotal } from '../core/cartHelpers'
+import logo from '../../assets/images/logo-round.png'
 
 const isActive = (history, path) => {
   if (history.location.pathname === path) {

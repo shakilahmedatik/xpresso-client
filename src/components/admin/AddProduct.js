@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import Layout from '../core/Layout'
+import Layout from '../shared/Layout'
 import { isAuthenticated } from '../auth'
-import { Redirect } from 'react-router-dom'
-import { getProduct, getCategories, updateProduct } from './apiAdmin'
+import { createProduct, getCategories } from './apiAdmin'
 
-const UpdateProduct = ({ match }) => {
+const AddProduct = () => {
   const [values, setValues] = useState({
     name: '',
     description: '',
@@ -15,7 +14,7 @@ const UpdateProduct = ({ match }) => {
     quantity: '',
     photo: '',
     loading: false,
-    error: false,
+    error: '',
     createdProduct: '',
     redirectToProfile: false,
     formData: '',
@@ -31,39 +30,17 @@ const UpdateProduct = ({ match }) => {
     loading,
     error,
     createdProduct,
-    redirectToProfile,
     formData,
   } = values
 
-  const init = productId => {
-    getProduct(productId).then(data => {
-      if (data.error) {
-        setValues({ ...values, error: data.error })
-      } else {
-        // populate the state
-        setValues({
-          ...values,
-          name: data.name,
-          description: data.description,
-          price: data.price,
-          category: data.category._id,
-          shipping: data.shipping,
-          quantity: data.quantity,
-          formData: new FormData(),
-        })
-        // load categories
-        initCategories()
-      }
-    })
-  }
-
   // load categories and set form data
-  const initCategories = () => {
+  const init = () => {
     getCategories().then(data => {
       if (data.error) {
         setValues({ ...values, error: data.error })
       } else {
         setValues({
+          ...values,
           categories: data,
           formData: new FormData(),
         })
@@ -72,7 +49,7 @@ const UpdateProduct = ({ match }) => {
   }
 
   useEffect(() => {
-    init(match.params.productId)
+    init()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -86,26 +63,22 @@ const UpdateProduct = ({ match }) => {
     event.preventDefault()
     setValues({ ...values, error: '', loading: true })
 
-    updateProduct(match.params.productId, user._id, token, formData).then(
-      data => {
-        if (data.error) {
-          setValues({ ...values, error: data.error })
-        } else {
-          setValues({
-            ...values,
-            name: '',
-            description: '',
-            photo: '',
-            price: '',
-            quantity: '',
-            loading: false,
-            error: false,
-            redirectToProfile: true,
-            createdProduct: data.name,
-          })
-        }
+    createProduct(user._id, token, formData).then(data => {
+      if (data.error) {
+        setValues({ ...values, error: data.error })
+      } else {
+        setValues({
+          ...values,
+          name: '',
+          description: '',
+          photo: '',
+          price: '',
+          quantity: '',
+          loading: false,
+          createdProduct: data.name,
+        })
       }
-    )
+    })
   }
 
   const newPostForm = () => (
@@ -183,7 +156,7 @@ const UpdateProduct = ({ match }) => {
         />
       </div>
 
-      <button className='btn btn-outline-primary'>Update Product</button>
+      <button className='btn btn-outline-primary'>Create Product</button>
     </form>
   )
 
@@ -201,7 +174,7 @@ const UpdateProduct = ({ match }) => {
       className='alert alert-info'
       style={{ display: createdProduct ? '' : 'none' }}
     >
-      <h2>{`${createdProduct}`} is updated!</h2>
+      <h2>{`${createdProduct}`} is created!</h2>
     </div>
   )
 
@@ -212,30 +185,23 @@ const UpdateProduct = ({ match }) => {
       </div>
     )
 
-  const redirectUser = () => {
-    if (redirectToProfile) {
-      if (!error) {
-        return <Redirect to='/' />
-      }
-    }
-  }
-
   return (
     <Layout
       title='Add a new product'
       description={`G'day ${user.name}, ready to add a new product?`}
     >
-      <div className='row'>
-        <div className='col-md-8 offset-md-2'>
-          {showLoading()}
-          {showSuccess()}
-          {showError()}
-          {newPostForm()}
-          {redirectUser()}
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-8 offset-md-2'>
+            {showLoading()}
+            {showSuccess()}
+            {showError()}
+            {newPostForm()}
+          </div>
         </div>
       </div>
     </Layout>
   )
 }
 
-export default UpdateProduct
+export default AddProduct

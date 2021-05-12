@@ -1,6 +1,6 @@
 import React from 'react'
-import '../styles.css'
-import Footer from './Footer'
+import '../../styles.css'
+import Footer from './footer/Footer'
 import NavigationBar from './NavigationBar'
 
 const Layout = ({
